@@ -6,6 +6,10 @@ lilToon 固有の問題を他の NDMF系非破壊ツールと協調動作させ�
 
 今は私 Reina_Sakiria が開発していますが、私以外の人がこのツールの開発を引き継いでくれることを願っています。(つまり、 `ReinaS'` の部分がこのツールの名前からなくなること)
 
+## VPM
+
+[Add vpm repo](vcc://vpm/addRepo?url=https://vpm.rs64.net/vpm.json) (TTT と共通)
+
 ## 依存パッケージ
 
 - nadena.dev.ndmf `^1.6.0`
