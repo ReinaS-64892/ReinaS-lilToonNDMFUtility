@@ -1,6 +1,6 @@
 {
   "name": "net.rs64.reina-s-liltoon-ndmf-utility",
-  "displayName": "ReinaS' lilToon NDMF Utility",
+  "displayName": "ReinaSakiria-s lilToon NDMF Utility",
   "version": "0.0.0",
   "unity": "2022.3",
   "description": "NDMF Utility for liToon",
@@ -8,7 +8,7 @@
     "name": "ReinaSakiria",
     "url": "https://rs64.net/"
   },
-  "url": "https://github.com/ReinaS-64892/ReinaS'lilToonNDMFUtility",
+  "url": "https://github.com/ReinaS-64892/ReinaS-lilToonNDMFUtility",
   "repo": "https://vpm.rs64.net/vpm.json",
   "vpmDependencies": {
     "nadena.dev.ndmf": "^1.6.0",
