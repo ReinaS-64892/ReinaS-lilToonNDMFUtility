@@ -1,0 +1,22 @@
+{
+    "name": "net.rs64.reina-s-liltoon-ndmf-utility.runtime",
+    "rootNamespace": "",
+    "references": [
+        "nadena.dev.ndmf.runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.vrchat.base",
+            "expression": "",
+            "define": "LNU_VRCSDK3"
+        }
+    ],
+    "noEngineReferences": false
+}

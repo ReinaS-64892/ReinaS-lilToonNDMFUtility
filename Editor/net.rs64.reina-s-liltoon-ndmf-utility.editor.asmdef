@@ -1,0 +1,32 @@
+{
+    "name": "net.rs64.reina-s-liltoon-ndmf-utility.editor",
+    "rootNamespace": "",
+    "references": [
+        "net.rs64.reina-s-liltoon-ndmf-utility.runtime",
+        "nadena.dev.ndmf",
+        "lilToon.Editor",
+        "VRC.SDKBase"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.vrchat.base",
+            "expression": "3.7.6",
+            "define": "LNU_VRCSDK3"
+        },
+        {
+            "name": "com.anatawa12.avatar-optimizer",
+            "expression": "1.8.7",
+            "define": "LNU_AAO_AVATAR_OPTIMIZER"
+        }
+    ],
+    "noEngineReferences": false
+}
