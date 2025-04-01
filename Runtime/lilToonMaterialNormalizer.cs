@@ -8,7 +8,7 @@ namespace lilToonNDMFUtility
     [AddComponentMenu(LNUConsts.ADD_MENU_BASE + nameof(lilToonMaterialNormalizer))]
     public sealed class lilToonMaterialNormalizer : LNUAvatarTagComponent, ITargetMaterialRange
     {
-        public MaterialRange NormalizeRange;
+        public MaterialRange NormalizeRange = new();
         public NormalizeTargetDetectionMode NormalizeTargetDetectionMode;
         // public List<NormalizeOption> NormalizeTargetManualSelections = new();
         // public bool NormalizeUseProperty = true;

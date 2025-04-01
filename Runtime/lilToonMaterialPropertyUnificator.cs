@@ -6,7 +6,7 @@ namespace lilToonNDMFUtility
     [AddComponentMenu(LNUConsts.ADD_MENU_BASE + nameof(lilToonMaterialPropertyUnificator))]
     public sealed class lilToonMaterialPropertyUnificator : LNUAvatarTagComponent , ITargetMaterialRange
     {
-        public MaterialRange UnifiedRange;
+        public MaterialRange UnifiedRange = new();
         public Material UnificationReferenceMaterial;
         public List<string> UnificationTargetProperties = new();
 
