@@ -173,4 +173,43 @@ namespace lilToonNDMFUtility
             }
         }
     }
+
+    [LNUPublicAPI]
+    public static class lilToonMaterialNormalizerPublicAPI
+    {
+        [LNUPublicAPI]
+        public static bool TryAddComponent(GameObject addTarget, out Component lnuMaterialNormalizer)
+        {
+            lnuMaterialNormalizer = addTarget.AddComponent<lilToonMaterialNormalizer>();
+            return true;
+        }
+
+        [LNUPublicAPI]
+        public static bool TrySetTargetDetectionOfAll(Component lnuMaterialNormalizer)
+        {
+            if (lnuMaterialNormalizer is not lilToonMaterialNormalizer lmn) { return false; }
+
+            lmn.NormalizeTargetDetectionMode = NormalizeTargetDetectionMode.All;
+            return true;
+        }
+
+        [LNUPublicAPI]
+        public static bool TrySetTargetDetectionOfTextureContains(Component lnuMaterialNormalizer)
+        {
+            if (lnuMaterialNormalizer is not lilToonMaterialNormalizer lmn) { return false; }
+
+            lmn.NormalizeTargetDetectionMode = NormalizeTargetDetectionMode.TextureContains;
+            return true;
+        }
+
+        [LNUPublicAPI]
+        public static bool TrySetTargetMaterials(Component lnuMaterialNormalizer, IEnumerable<Material> materials)
+        {
+            if (lnuMaterialNormalizer is not lilToonMaterialNormalizer lmn) { return false; }
+
+            lmn.NormalizeRange.RangeMode = MaterialRange.Mode.Manual;
+            lmn.NormalizeRange.ManualSelections = materials.ToList();
+            return true;
+        }
+    }
 }
