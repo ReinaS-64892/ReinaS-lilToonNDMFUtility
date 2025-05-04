@@ -6,9 +6,12 @@ namespace lilToonNDMFUtility
 {
     internal class LNUPlugin : Plugin<LNUPlugin>
     {
+        public override string QualifiedName => "net.rs64.reina-s-liltoon-ndmf-utility";
+        public override string DisplayName => "ReinaS' lilToon NDMF Utility";
         protected override void Configure()
         {
             InPhase(BuildPhase.Transforming)
+                .AfterPlugin("net.rs64.tex-trans-tool")
                 .Run(lilToonMaterialPropertyUnificatorProcessor.Instance)
                 .PreviewingWith(new lilToonMaterialPropertyUnificatorFilter())
 
