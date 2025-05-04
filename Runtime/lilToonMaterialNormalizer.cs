@@ -47,9 +47,9 @@ namespace lilToonNDMFUtility
 
         AlphaMask = 8,
 
-        // NormalMap の Scale を焼く方法がわからんから断念
-        // NormalMap = 9,
-        // NormalMap2nd = 10,
+        // NormalMap の Scale を焼く方法がわからんけど初期値書き込みのために
+        NormalMap = 9,
+        NormalMap2nd = 10,
         // NormalMap2ndScaleMask = 11,
 
         // TangentMap は対象がない
@@ -125,8 +125,8 @@ namespace lilToonNDMFUtility
 
                 case NormalizeTarget.AlphaMask: return "_AlphaMask";
 
-                // case NormalizeTarget.NormalMap: return "_BumpMap";
-                // case NormalizeTarget.NormalMap2nd: return "_Bump2ndMap";
+                case NormalizeTarget.NormalMap: return "_BumpMap";
+                case NormalizeTarget.NormalMap2nd: return "_Bump2ndMap";
                 // case NormalizeTarget.NormalMap2ndScaleMask: return "_Bump2ndScaleMask";
 
                 // case NormalizeTarget.AnisotropyTangentMap: return "_AnisotropyTangentMap";
