@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using nadena.dev.ndmf;
 using nadena.dev.ndmf.preview;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -43,6 +44,8 @@ namespace lilToonNDMFUtility
             if (normalizingOption[NormalizeTarget.MainTexture2nd].EnableNormalize) lilToonNormalizerImpl.DoNormalizeMainTexture2nd(ctx, loadCtx, mutTargetMaterials);
             if (normalizingOption[NormalizeTarget.MainTexture3rd].EnableNormalize) lilToonNormalizerImpl.DoNormalizeMainTexture3rd(ctx, loadCtx, mutTargetMaterials);
             if (normalizingOption[NormalizeTarget.AlphaMask].EnableNormalize) lilToonNormalizerImpl.DoNormalizeAlphaMask(ctx, loadCtx, mutTargetMaterials);
+            if (normalizingOption[NormalizeTarget.NormalMap].EnableNormalize) lilToonNormalizerImpl.DoNormalizeNormalMap(mutTargetMaterials);
+            if (normalizingOption[NormalizeTarget.NormalMap2nd].EnableNormalize) lilToonNormalizerImpl.DoNormalizeNormalMap2nd(mutTargetMaterials);
             if (normalizingOption[NormalizeTarget.BacklightColorTexture].EnableNormalize) lilToonNormalizerImpl.DoNormalizeBacklightColorTexture(ctx, loadCtx, mutTargetMaterials);
             if (normalizingOption[NormalizeTarget.ShadowStrengthMask].EnableNormalize) lilToonNormalizerImpl.DoNormalizeShadowStrengthMask(ctx, loadCtx, mutTargetMaterials, targetMaterials);
             // if (normalizingOption[NormalizeTarget.ShadowColorTexture].EnableNormalize) lilToonNormalizerImpl.DoNormalizeShadowColorTexture(ctx, loadCtx, mutTargetMaterials);
@@ -228,7 +231,7 @@ namespace lilToonNDMFUtility
             string use,
             string tex,
             string col,
-            Material[] originlilToonMaterials = null,
+            Material[] originlilToonMaterials = null,// これは use などが複数 property と共通している場合などに元々の値を参照しないと壊れてしまう場合用にある。
             bool defaultTexBlack = false
         )
         {
@@ -647,6 +650,29 @@ namespace lilToonNDMFUtility
             }
         }
 
+        internal static void DoNormalizeNormalMap(Material[] mutlilToonMaterials)
+        {
+            foreach (var mat in mutlilToonMaterials)
+            {
+                mat.SetInt(lilPropC.useNormalMap, 1);
+                if (mat.GetTexture(lilPropC.normalMap) == null)
+                {
+                    mat.SetTexture(lilPropC.normalMap, DefaultTextureAssets.NormalMap);
+                }
+            }
+        }
+        internal static void DoNormalizeNormalMap2nd(Material[] mutlilToonMaterials)
+        {
+            foreach (var mat in mutlilToonMaterials)
+            {
+                mat.SetInt(lilPropC.useNormalMap2nd, 1);
+                if (mat.GetTexture(lilPropC.normalMap2nd) == null)
+                {
+                    mat.SetTexture(lilPropC.normalMap2nd, DefaultTextureAssets.NormalMap);
+                }
+            }
+        }
+
 
 
 
@@ -710,6 +736,20 @@ namespace lilToonNDMFUtility
             }
             return true;
         }
+
+        internal static class DefaultTextureAssets
+        {
+            internal static Texture2D White; // 1,1,1,1
+            internal static Texture2D Black; // 0,0,0,1
+            internal static Texture2D NormalMap; // 0.5,0.5,1,1 (source)
+            static DefaultTextureAssets()
+            {
+                White = AssetDatabase.LoadAssetAtPath<Texture2D>(AssetDatabase.GUIDToAssetPath("a0953136fa5b0ccb2a455353e3a67800"));
+                Black = AssetDatabase.LoadAssetAtPath<Texture2D>(AssetDatabase.GUIDToAssetPath("c405ef197d2be0cbabb0458e9e663e81"));
+                NormalMap = AssetDatabase.LoadAssetAtPath<Texture2D>(AssetDatabase.GUIDToAssetPath("9892cfb7b24bda2bf927eeaf5c79939f"));
+            }
+        }
+
         internal static class lilPropC
         {
             public const string CN_Use = "_Use";
@@ -742,6 +782,11 @@ namespace lilToonNDMFUtility
             public const string alphaMask = "_AlphaMask";
             public const string alphaMaskScale = "_AlphaMaskScale";
             public const string alphaMaskValue = "_AlphaMaskValue";
+
+            public const string useNormalMap = "_UseBumpMap";
+            public const string normalMap = "_BumpMap";
+            public const string useNormalMap2nd = "_UseBump2ndMap";
+            public const string normalMap2nd = "_Bump2ndMap";
 
             public const string useBacklight = "_UseBacklight";
             public const string backlightColor = "_BacklightColor";
