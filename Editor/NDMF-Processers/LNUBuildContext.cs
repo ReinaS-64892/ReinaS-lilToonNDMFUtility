@@ -81,12 +81,17 @@ namespace lilToonNDMFUtility
                 readBackTextures[kv.Key] = TextureUtil.CopyTexture2D(kv.Key, null, (kv.Value?.mipmapCount ?? 2) > 1);
             }
             TextureUtil.ReplaceTextureAll(this, mats, readBackTextures);
-            foreach (var i in readBackTextures)
+            foreach (var kv in readBackTextures)
             {
-                _needCompress2OriginTexture[readBackTextures[i.Key]] = _renderTextureOriginDict[i.Key];
+                _needCompress2OriginTexture[kv.Value] = _renderTextureOriginDict[kv.Key];
 
-                _context.AssetSaver.SaveAsset(i.Value);
+
+                _context.AssetSaver.SaveAsset(kv.Value);
+
+                if (_renderTextureOriginDict.TryGetValue(kv.Key, out var origin) && origin != null)
+                    ObjectRegistry.RegisterReplacedObject(origin, kv.Value);
             }
+
             _renderTextureOriginDict.Clear();
         }
         public void Compression()
