@@ -8,7 +8,7 @@ lilToon 固有の問題を他の NDMF系非破壊ツールと協調動作させ�
 
 ## VPM
 
-[Add vpm repo](vcc://vpm/addRepo?url=https://vpm.rs64.net/vpm.json) (TTT と共通)
+[Add vpm repo](https://vpm.rs64.net/add-repo) (TTT と共通)
 
 ## 依存パッケージ
 
