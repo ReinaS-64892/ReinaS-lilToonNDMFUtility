@@ -15,6 +15,16 @@ lilToon 固有の問題を他の NDMF系非破壊ツールと協調動作させ�
 - nadena.dev.ndmf `^1.6.0`
 - jp.lilxyzw.liltoon `1.8.5`
 
+## TexTransTool との互換性
+
+TexTransTool との併用はサポートされていますが、既知の互換性問題が存在します。
+
+### TTT の [内部レンダーテクスチャーフォーマット](https://ttt.rs64.net/docs/Reference/General/InternalTextureFormat)
+
+`Tools/TexTransTool/Menu` から変更可能な、 [内部レンダーテクスチャーフォーマット](https://ttt.rs64.net/docs/Reference/General/InternalTextureFormat) を `Byte : 8bit - 符号なし整数` 以外にすると、TexTransTool の中間保存時の Texture2D が linear なフォーマットになり、このツールは現状それを正しく扱えないため最終結果が白くなります。
+
+**TexTransTool のコンポーネントと併用する場合は `Byte : 8bit - 符号なし整数` に戻してください！**
+
 ## コンポーネントの基本仕様
 
 `ReinaS' lilToon NDMF Utility` 略して `LNU` と表記します。
