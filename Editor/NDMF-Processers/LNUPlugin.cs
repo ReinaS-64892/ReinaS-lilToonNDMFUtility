@@ -22,10 +22,9 @@ namespace lilToonNDMFUtility
 
             InPhase(BuildPhase.Optimizing)
                 .BeforePlugin("com.anatawa12.avatar-optimizer")
-                .Run(lilToonMaterialOptimizerProcessor.Instance)
+                .AfterPlugin("net.rs64.tex-trans-tool")// lilToon の Optimizing は AtlasTexture よりも後に行うべきである。
+                .Run(lilToonMaterialOptimizerProcessor.Instance).Then
 
-                .Then
-                .AfterPlugin("net.rs64.tex-trans-tool")
                 .Run("TextureCompression", ctx =>
                 {
                     GetCtx(ctx).Compression();
