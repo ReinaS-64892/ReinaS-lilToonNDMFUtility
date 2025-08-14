@@ -12,6 +12,6 @@
   "repo": "https://vpm.rs64.net/vpm.json",
   "vpmDependencies": {
     "nadena.dev.ndmf": "^1.6.0",
-    "jp.lilxyzw.liltoon": "^1.8.5"
+    "jp.lilxyzw.liltoon": "^2.0.0"
   }
 }
